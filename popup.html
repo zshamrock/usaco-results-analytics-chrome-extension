@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+        body {
+            min-width: 500px;
+            min-height: 500px;
+            overflow-x: hidden;
+        }
+
+        /*img {*/
+            /*margin: 5px;*/
+            /*border: 2px solid black;*/
+            /*vertical-align: middle;*/
+            /*width: 75px;*/
+            /*height: 75px;*/
+        /*}*/
+    </style>
+
+    <link rel="stylesheet" href="css/nv.d3.css"/>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+    <!--<script src="popup1.jsp"></script>-->
+    <script src="js/d3.v3.js"  charset="utf-8"></script>
+    <script src="js/nv.d3.js"  charset="utf-8"></script>
+</head>
+<body>
+    <div id="chart">
+        <svg style='height:500px;width:500px'> </svg>
+    </div>
+    <script src="js/pie.js" charset="utf-8"></script>
+</body>
+</html>
+
+
+
