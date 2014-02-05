@@ -1,3 +1,5 @@
+"use strict";
+
 function grab_results(request, sender, callback) {
     // how can we verify the sender of the message (it is tab, so it has the id)
     var rows = $("tr", $("table").first()).slice(1),

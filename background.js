@@ -1,3 +1,5 @@
+"use strict";
+
 function onRequest(request, sender) {
     console.log(request);
 
