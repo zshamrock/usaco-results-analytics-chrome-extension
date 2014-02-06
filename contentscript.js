@@ -1,40 +1,33 @@
 "use strict";
 
-function grab_results(request, sender, callback) {
+function collectData(request, sender, callback) {
+    console.log("Collecting the data...");
+    // TODO: use request and sender
+
     // how can we verify the sender of the message (it is tab, so it has the id)
     var rows = $("tr", $("table").first()).slice(1),
         i,
         columns,
-        results = [],
-        result;
+        participants = [],
+        participant;
 
     for (i  = 0; i < rows.length; i++) {
         columns = $("td", rows.get(i));
-        result = {country: columns.eq(0).text(),
-            year: jQuery.trim(columns.eq(1).text()),
-            name: columns.eq(2).text(),
-            score: columns.eq(3).text()};
-        results.push(result);
+        participant = {country: columns.eq(0).text(),
+                       year: parseInt(jQuery.trim(columns.eq(1).text())),
+                       name: columns.eq(2).text(),
+                       score: parseInt(columns.eq(3).text())};
+
+        participants.push(participant);
     }
 
-    var participantsPerCountry = _.chain(results)
-        .groupBy(function(participant) {
-            return participant.country;
-        })
-        .map(function(participants, country) {
-            return {country: country, participants: participants.length};
-        })
-        .sortBy(function(entry) {
-            return -entry.participants; // "-" to sort descending
-        })
-        .value();
-
-    callback(JSON.stringify(participantsPerCountry));
-//    chrome.runtime.connect().postMessage(JSON.stringify(results));
+    callback(JSON.stringify(participants));
 }
 
+// TODO: see documentation for this API call to understand better what it does
 chrome.extension.sendRequest({}); // enable show tab icon
 
-chrome.runtime.onMessage.addListener(grab_results);
+// message is sent from analytics.js when popup is open
+chrome.runtime.onMessage.addListener(collectData);
 
 
