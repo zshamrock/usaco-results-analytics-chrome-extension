@@ -21,21 +21,23 @@ function process(data) {
         })
         .value();
 
-    console.log(participantsListPerCountry);
-
-    var avgScorePerCountry = _.map(participantsListPerCountry, function(participants, country) {
-        var sumScore = function(memo, participant) {
-            return memo + participant.score;
-        };
-        return {country: country, avgScore: Math.floor(_.reduce(participants, sumScore, 0) / participants.length)};
-    });
+    var avgScorePerCountry = _.chain(participantsListPerCountry)
+        .map(function(participants, country) {
+            var sumScore = function(memo, participant) {
+                return memo + participant.score;
+            };
+            return {country: country, avgScore: Math.floor(_.reduce(participants, sumScore, 0) / participants.length)};
+        })
+        .sortBy(function(entry) {
+            return entry.country;
+        })
+        .value();
 
     drawParticipantsNumberPerCountry(participantsNumberPerCountry);
     drawAvgScorePerCountry(avgScorePerCountry);
 }
 
 function drawParticipantsNumberPerCountry(data) {
-    console.log(data);
 
     nv.addGraph(function() {
         var width = 500,
@@ -48,7 +50,7 @@ function drawParticipantsNumberPerCountry(data) {
             .width(width)
             .height(height);
 
-        d3.select("#chart svg")
+        d3.select("#piechart svg")
             .datum(data)
             .transition().duration(1200)
             .attr('width', width)
@@ -60,12 +62,25 @@ function drawParticipantsNumberPerCountry(data) {
 }
 
 function drawAvgScorePerCountry(data) {
-    console.log("drawAvgScorePerCountry");
-    console.log(data);
+
+    nv.addGraph(function() {
+        var chart = nv.models.discreteBarChart()
+            .x(function(d) { return d.country; })
+            .y(function(d) { return d.avgScore; })
+            .staggerLabels(true)
+            .tooltips(true)
+            .showValues(true);
+
+        d3.select('#averagechart svg')
+            .datum([{key: "Average Score", values: data}])
+            .transition().duration(500)
+            .call(chart);
+
+        return chart;
+    });
 }
 
 chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
     var tab = tabs[0];
-    console.log(tab);
     chrome.tabs.sendMessage(tab.id, "does it matter?", process);
 });
