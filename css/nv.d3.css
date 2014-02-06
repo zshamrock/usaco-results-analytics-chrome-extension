@@ -34,7 +34,7 @@
   border: 1px solid rgba(0,0,0,.2);
   z-index: 10000;
 
-  font-family: Arial;
+  font-family: Tahoma, Geneva, sans-serif;
   font-size: 13px;
   text-align: left;
   pointer-events: none;
@@ -158,11 +158,13 @@ svg {
 
 
 svg text {
-  font: normal 12px Arial;
+  font: normal 12px;
+  font-family: Tahoma, Geneva, sans-serif;
 }
 
 svg .title {
- font: bold 14px Arial;
+ font: bold 14px;
+ font-family: Tahoma, Geneva, sans-serif;
 }
 
 .nvd3 .nv-background {

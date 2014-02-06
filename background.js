@@ -1,8 +1,6 @@
 "use strict";
 
 function onRequest(request, sender) {
-    console.log(request);
-
     chrome.pageAction.show(sender.tab.id);
 }
 
