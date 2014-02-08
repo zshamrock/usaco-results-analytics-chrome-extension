@@ -3,7 +3,7 @@
     "name": "USACO Results Analytics",
     "short_name": "USACO Results Analytics",
     "description": "Analyze USACO contest results. Draw a few diagrams based on the data.",
-    "version": "1.0",
+    "version": "1.0.1",
 
     "icons": {
         "16": "icons/icon16x16.png",
