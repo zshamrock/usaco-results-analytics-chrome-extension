@@ -184,8 +184,11 @@
         return n > 1 ? participant + 's' : participant;
     }
 
-    chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+    // the correct way to get the tab id using queryInfo object
+    chrome.tabs.query({ currentWindow: true, active: true, status: 'complete' }, function (tabs) {
         var tab = tabs[0];
+        // Sends a single message to the content script(s) in the specified tab, with an optional callback to run when a response is sent back.
+        // The runtime.onMessage event is fired in each content script running in the specified tab for the current extension.
         chrome.tabs.sendMessage(tab.id, "does it matter?", process);
     });
 

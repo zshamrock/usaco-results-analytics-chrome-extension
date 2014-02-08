@@ -1,17 +1,9 @@
-"use strict";
+(function() {
+    "use strict";
 
-function onRequest(request, sender) {
-    chrome.pageAction.show(sender.tab.id);
-}
-
-
-chrome.extension.onRequest.addListener(onRequest);
-
-
-//chrome.runtime.onConnect.addListener(function(port) {
-//    port.onMessage.addListener(function(msg, sender) {
-//        console.log(msg);
-//
-//        chrome.pageAction.show(sender.tab.id);
-//    });
-//});
+    // Fired when a message is sent from either an extension process or a content script.
+    // message is send from contentscript.js to enable the page action icon
+    chrome.runtime.onMessage.addListener(function(message, sender) {
+        chrome.pageAction.show(sender.tab.id);
+    });
+})();

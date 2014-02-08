@@ -24,10 +24,15 @@ function collectData(request, sender, callback) {
     callback(JSON.stringify(participants));
 }
 
-// TODO: see documentation for this API call to understand better what it does
-chrome.extension.sendRequest({}); // enable show tab icon
+// activate the extension after the page content was completely loaded
+$(document).ready(function() {
+    // Sends a single message to onMessage event listeners within the extension (or another extension/app).
+    // send message to the background script/page (background.js)
+    chrome.runtime.sendMessage({}); // enable show tab icon
 
-// message is sent from analytics.js when popup is open
-chrome.runtime.onMessage.addListener(collectData);
+    // message is sent from analytics.js when popup is open
+    chrome.runtime.onMessage.addListener(collectData);
+});
+
 
 
