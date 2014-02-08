@@ -10,7 +10,8 @@
     }],
 
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["background.js"],
+        "persistent": false // convert it to the event page
     },
 
     "page_action": {
