@@ -1,6 +1,5 @@
-"use strict";
-
 (function() {
+    "use strict";
     var PARTICIPANT_TEXT = 'participant';
 
     /*
