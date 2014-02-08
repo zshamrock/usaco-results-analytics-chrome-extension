@@ -1,6 +1,7 @@
 {
     "manifest_version": 2,
     "name": "USACO Results Analytics",
+    "short_name": "USACO Results Analytics",
     "description": "Analyze USACO contest results. Draw a few diagrams based on the data.",
     "version": "1.0",
 
@@ -11,7 +12,7 @@
 
     "background": {
         "scripts": ["background.js"],
-        "persistent": false // convert it to the event page
+        "persistent": false
     },
 
     "page_action": {
