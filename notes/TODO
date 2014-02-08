@@ -8,6 +8,8 @@ There is an issue when display the name on the bubble chart if 2 participants fr
     and same year, only the first one is displayed (actually displayed 2 times) (probably this is ok, because usually
     only unique spots make the interest)
 - Try out the notifications API
+- Github page
 - Pack
 - And publish into the store
+
 
