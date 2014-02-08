@@ -6,7 +6,7 @@
 
     "content_scripts": [{
         "matches": ["http://usaco.org/current/data/*", "http://www.usaco.org/current/data/*"],
-        "js": ["js/jquery-2.1.0.js", "contentscript.js"]
+        "js": ["js/jquery-2.1.0.min.js", "contentscript.js"]
     }],
 
     "background": {

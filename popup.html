@@ -7,20 +7,34 @@
     <title>USACO Results Analytics</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+
+    <link rel="stylesheet" href="css/nv.d3.css"/>
 
     <style>
         body {
             min-width: 500px;
             min-height: 500px;
             overflow-x: hidden;
+
+            <!-- override bootstrap body font -->
             font-family: Tahoma, Geneva, sans-serif;
         }
 
-    </style>
+        <!-- override charts font -->
+        .nvtooltip {
+            font-family: Tahoma, Geneva, sans-serif;
+        }
 
-    <link rel="stylesheet" href="css/nv.d3.css"/>
+        svg text {
+            font-family: Tahoma, Geneva, sans-serif;
+        }
+
+        svg .title {
+            font-family: Tahoma, Geneva, sans-serif;
+        }
+    </style>
 
     <!--
       - JavaScript and HTML must be in separate files: see our Content Security
@@ -29,11 +43,11 @@
       - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
      -->
 
-    <script src="js/jquery-2.1.0.js" charset="utf-8"></script>
+    <script src="js/jquery-2.1.0.min.js" charset="utf-8"></script>
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
     <script src="js/d3.v3.js"  charset="utf-8"></script>
     <script src="js/nv.d3.js"  charset="utf-8"></script>
-    <script src="js/underscore-1.5.2.js" charset="utf-8"></script>
+    <script src="js/underscore-1.5.2.min.js" charset="utf-8"></script>
 </head>
 <body>
     <ul class="nav nav-pills">
@@ -68,10 +82,6 @@
 
     <script src="analytics.js" charset="utf-8"></script>
 
-
-    <!--<div>-->
-        <!--<span>Upload to DL (<a href="http://dl.gsu.by" target="_blank">dl.gsu.by</a>)</span>-->
-    <!--</div>-->
 </body>
 </html>
 
