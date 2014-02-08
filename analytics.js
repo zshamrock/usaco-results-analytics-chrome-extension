@@ -167,8 +167,9 @@
                 })
                 .color(d3.scale.category10().range());
 
-            chart.xAxis.tickFormat(d3.format('10d'));
-            chart.yAxis.tickFormat(d3.format('10d'));
+            // The general form of a specifier is [​[fill]align][sign][symbol][0][width][,][.precision][type].
+            chart.xAxis.tickFormat(d3.format('d'));
+            chart.yAxis.tickFormat(d3.format('d'));
 
             d3.select('#bubblechart svg')
                 .datum(d)
