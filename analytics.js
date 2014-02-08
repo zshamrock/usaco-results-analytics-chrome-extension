@@ -35,6 +35,7 @@ function process(data) {
 
     drawParticipantsNumberPerCountry(participantsNumberPerCountry);
     drawAvgScorePerCountry(avgScorePerCountry);
+    drawBubbleChart(participantsListPerCountry);
 }
 
 function drawParticipantsNumberPerCountry(data) {
@@ -73,6 +74,64 @@ function drawAvgScorePerCountry(data) {
 
         d3.select('#averagechart svg')
             .datum([{key: "Average Score", values: data}])
+            .transition().duration(500)
+            .call(chart);
+
+        return chart;
+    });
+}
+
+function drawBubbleChart(data) {
+    var shapes = ['circle', 'cross', 'triangle-up', 'triangle-down', 'diamond', 'square'],
+        j = 0;
+    var d = _.chain(data)
+        .map(function(participants, country) {
+            var values = [],
+                shape = shapes[j % shapes.length];
+            j++;
+            _.each(participants, function(participant) {
+                values.push({
+                    x: participant.score,
+                    y: participant.year,
+                    size: participants.length,
+                    shape: shape
+                });
+            });
+
+            return {key: country, values: values};
+        })
+        .sortBy(function(entry) {
+            return -entry.values.length;
+        })
+        .value();
+
+    console.log(d);
+
+    nv.addGraph(function() {
+        var chart = nv.models.scatterChart()
+            .showDistX(true)
+            .showDistY(true)
+            .tooltips(true)
+            .tooltipContent(function(key, score, year) {
+                var participants = data[key];
+                var participant = _.find(participants, function(participant) {
+                    return participant.year == year && participant.score == score;
+                });
+                var totalParticipants = participants.length,
+                    participantsText = 'participant' + (totalParticipants > 1 ? 's' : '');
+                return '<strong>' +
+                    key +
+                    ' (' + totalParticipants + ' ' + participantsText + ') ' +
+                    participant.name +
+                    '</strong>';
+            })
+            .color(d3.scale.category10().range());
+
+        chart.xAxis.tickFormat(d3.format('10d'));
+        chart.yAxis.tickFormat(d3.format('10d'));
+
+        d3.select('#bubblechart svg')
+            .datum(d)
             .transition().duration(500)
             .call(chart);
 
