@@ -1,6 +1,5 @@
 (function() {
     "use strict";
-    var PARTICIPANT_TEXT = 'participant';
 
     /*
         data is [{participant}],
@@ -59,6 +58,10 @@
                 .x(function(d) { return d.country; })
                 .y(function(d) { return d.participants; })
                 .color(d3.scale.category10().range())
+                .tooltipContent(function(key, y) {
+                    return '<h3>' + key + '</h3>' +
+                        '<p>' +  parseInt(y) + ' ' + pluralizeParticipants(y) + '</p>';
+                })
                 .width(width)
                 .height(height);
 
@@ -98,7 +101,7 @@
                             scoreSummary += ", ..." + ", " + lastScore;
                         }
                     }
-                    var participantsText = pluralize(PARTICIPANT_TEXT, totalParticipants);
+                    var participantsText = pluralizeParticipants(totalParticipants);
                     return '<h3>' + x + ' (' + totalParticipants + ' ' + participantsText + ')' + '</h3>' +
                         '<p>' + '[' + scoreSummary + '] / ' + totalParticipants + ' => ' + y + '</p>';
                 })
@@ -133,7 +136,7 @@
                         x: participant.score,
                         y: participant.year,
                         size: participants.length,
-                        shape: shape
+                        //shape: shape
                     });
                 });
 
@@ -155,7 +158,7 @@
                         return participant.year == year && participant.score == score;
                     });
                     var totalParticipants = participants.length,
-                        participantsText = pluralize(PARTICIPANT_TEXT, totalParticipants);
+                        participantsText = pluralizeParticipants(totalParticipants);
                     return '<strong>' +
                         key +
                         ' (' + totalParticipants + ' ' + participantsText + ') ' +
@@ -176,8 +179,9 @@
         });
     }
 
-    function pluralize(word, n) {
-        return n > 1 ? word + "s" : word;
+    function pluralizeParticipants(n) {
+        var participant = 'participant';
+        return n > 1 ? participant + 's' : participant;
     }
 
     chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
