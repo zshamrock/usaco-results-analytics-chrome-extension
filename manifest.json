@@ -5,11 +5,19 @@
     "description": "Analyze USACO contest results. Draw a few diagrams based on the data.",
     "version": "1.0",
 
+    "default_locale": "en",
+    "icons": {
+        "16": "icon16x16.png",
+        "48": "icon48x48.png",
+        "128": "icon128x128.png"
+    },
+
     "content_scripts": [{
         "matches": ["http://usaco.org/current/data/*", "http://www.usaco.org/current/data/*"],
         "js": ["js/jquery-2.1.0.min.js", "contentscript.js"]
     }],
 
+    "author": "Aliaksandr Kazlou",
     "background": {
         "scripts": ["background.js"],
         "persistent": false
