@@ -135,8 +135,8 @@
                     values.push({
                         x: participant.score,
                         y: participant.year,
-                        size: participants.length,
-                        //shape: shape
+                        size: participants.length
+                        //shape: shape // it doesn't work for some reason, even if specify the shape explicitly
                     });
                 });
 
