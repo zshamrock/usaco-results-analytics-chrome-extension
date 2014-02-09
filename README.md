@@ -10,4 +10,9 @@ __See *prod* branch for the details how to package the extension.__
  - see the analytics
 
 Here is a video with extension in action:
-&lt;iframe width="420" height="315" src="//www.youtube.com/embed/93Zr_H_fcaI" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=93Zr_H_fcaI"
+target="_blank"><img src="http://img.youtube.com/vi/93Zr_H_fcaI/0.jpg"
+alt="Extension in action" width="240" height="180" border="1" /></a>
+
+[![Extension in action](http://img.youtube.com/vi/93Zr_H_fcaI/0.jpg)](http://www.youtube.com/watch?v=93Zr_H_fcaI)
