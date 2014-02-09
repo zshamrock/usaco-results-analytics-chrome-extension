@@ -13,6 +13,4 @@ Here is a video with extension in action:
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=93Zr_H_fcaI"
 target="_blank"><img src="http://img.youtube.com/vi/93Zr_H_fcaI/0.jpg"
-alt="Extension in action" width="240" height="180" border="1" /></a>
-
-[![Extension in action](http://img.youtube.com/vi/93Zr_H_fcaI/0.jpg)](http://www.youtube.com/watch?v=93Zr_H_fcaI)
+alt="Extension in action" width="430" height="320" border="1" /></a>
