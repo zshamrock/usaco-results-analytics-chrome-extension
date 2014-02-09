@@ -1,6 +1,7 @@
 Type of analytics:
  - average score per year
 
+- Update the average score chart, put country on top of score, if possible
 - Add google analytics support for the extension to see the usage (do it before the release)
 Find the way to draw different shapes on the bubble graph
 There is an issue when display the name on the bubble chart if 2 participants from the same country, with the same score
